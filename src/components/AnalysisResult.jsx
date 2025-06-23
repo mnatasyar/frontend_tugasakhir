@@ -54,7 +54,7 @@ const AnalysisResult = ({ data }) => {
 
         <div className="mt-6">
           <h3 className="font-medium mb-2">
-            Frame Analisis (klik gambar untuk perbesar):
+            Frame Analisis:
           </h3>
           <Slider dots infinite speed={500} slidesToShow={1} slidesToScroll={1}>
             {data.map((frame, idx) => (
