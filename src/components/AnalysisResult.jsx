@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import { BASE_URL, OUTPUT_VIDEO_URL } from "../utils/constants";
+import DetailedAnalysisModal from "./DetailedAnalysisModal";
 
 const AnalysisResult = ({ data }) => {
   const isVideo = Array.isArray(data);
@@ -17,6 +18,8 @@ const AnalysisResult = ({ data }) => {
   const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lightboxSlides, setLightboxSlides] = useState([]);
+  const [showDetailedAnalysis, setShowDetailedAnalysis] = useState(false);
+  const [detailedFrame, setDetailedFrame] = useState(null);
 
   if (isVideo) {
     const totalFaces = data.reduce((acc, frame) => acc + frame.total_faces, 0);
@@ -37,7 +40,7 @@ const AnalysisResult = ({ data }) => {
     });
 
     return (
-      <div className="mt-6 p-4 border rounded-md bg-white shadow">
+      <div className="mt-6 p-4 border rounded-md bg-white text-black shadow">
         <h2 className="text-lg font-semibold mb-2">Ringkasan Analisis Video</h2>
         <p>Total wajah dari seluruh frame: {totalFaces}</p>
         <div className="mt-2 space-y-1">
@@ -56,7 +59,14 @@ const AnalysisResult = ({ data }) => {
           <h3 className="font-medium mb-2">
             Frame Analisis (klik gambar untuk perbesar):
           </h3>
-          <Slider dots infinite speed={500} slidesToShow={1} slidesToScroll={1}>
+          <Slider
+            dots
+            infinite={false}
+            speed={500}
+            slidesToShow={1}
+            slidesToScroll={1}
+            beforeChange={(oldIdx, newIdx) => setCurrentIndex(newIdx)}
+          >
             {data.map((frame, idx) => (
               <div key={idx} className="p-2">
                 <p className="mb-1 text-sm">
@@ -106,12 +116,30 @@ const AnalysisResult = ({ data }) => {
           </Slider>
         </div>
 
+        <div className="mt-6 flex justify-center">
+          <div
+            onClick={() => {
+              setShowDetailedAnalysis(true);
+              setDetailedFrame(data[currentIndex]);
+            }}
+            className="cursor-pointer mt-6 p-4 border border-black rounded-xl bg-white text-black hover:bg-black hover:text-white transition-all duration-300 shadow-md text-center font-semibold"
+          >
+            📊 Klik di sini untuk Analisis Mendalam Frame Ini
+          </div>
+        </div>
+
         <Lightbox
           open={open}
           close={() => setOpen(false)}
           index={currentIndex}
           slides={lightboxSlides}
           plugins={[Fullscreen, Zoom, Thumbnails]}
+        />
+
+        <DetailedAnalysisModal
+          isOpen={showDetailedAnalysis}
+          onClose={() => setShowDetailedAnalysis(false)}
+          data={detailedFrame}
         />
       </div>
     );
@@ -159,12 +187,29 @@ const AnalysisResult = ({ data }) => {
         </div>
       )}
 
+      {/* Tombol Analisis Mendalam Gambar */}
+      <div className="mt-6 flex justify-center">
+        <div
+          onClick={() => setShowDetailedAnalysis(true)}
+          className="cursor-pointer mt-6 p-4 border border-black rounded-xl bg-white text-black hover:bg-black hover:text-white transition-all duration-300 shadow-md text-center font-semibold"
+        >
+          📊 Klik di sini untuk Analisis Mendalam Gambar Ini
+        </div>
+      </div>
+
       <Lightbox
         open={open}
         close={() => setOpen(false)}
         index={currentIndex}
         slides={lightboxSlides}
         plugins={[Fullscreen, Zoom]}
+      />
+
+      {/* Modal Analisis Mendalam */}
+      <DetailedAnalysisModal
+        isOpen={showDetailedAnalysis}
+        onClose={() => setShowDetailedAnalysis(false)}
+        data={data}
       />
     </div>
   );
