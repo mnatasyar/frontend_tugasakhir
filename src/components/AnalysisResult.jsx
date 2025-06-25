@@ -57,7 +57,7 @@ const AnalysisResult = ({ data }) => {
 
         <div className="mt-6">
           <h3 className="font-medium mb-2">
-            Frame Analisis (klik gambar untuk perbesar):
+            Frame Analisis:
           </h3>
           <Slider
             dots
