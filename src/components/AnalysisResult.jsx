@@ -29,7 +29,7 @@ const AnalysisResult = ({ data }) => {
       src: `${OUTPUT_VIDEO_URL}/${frame.output_image}`,
       description: `Frame ke-${frame.frame_index + 1} (detik ${
         frame.frame_time_sec
-      }s)`,
+      })`,
     }));
 
     data.forEach((frame) => {
@@ -56,9 +56,7 @@ const AnalysisResult = ({ data }) => {
         </div>
 
         <div className="mt-6">
-          <h3 className="font-medium mb-2">
-            Frame Analisis:
-          </h3>
+          <h3 className="font-medium mb-2">Frame Analisis:</h3>
           <Slider
             dots
             infinite={false}
@@ -70,7 +68,7 @@ const AnalysisResult = ({ data }) => {
             {data.map((frame, idx) => (
               <div key={idx} className="p-2">
                 <p className="mb-1 text-sm">
-                  Frame ke-{idx + 1} (detik: {frame.frame_time_sec}s)
+                  Frame ke-{idx + 1} (detik: {frame.frame_time_sec})
                 </p>
                 <img
                   src={`${OUTPUT_VIDEO_URL}/${frame.output_image}`}
@@ -140,6 +138,7 @@ const AnalysisResult = ({ data }) => {
           isOpen={showDetailedAnalysis}
           onClose={() => setShowDetailedAnalysis(false)}
           data={detailedFrame}
+          frameNumber={currentIndex + 1}
         />
       </div>
     );
@@ -187,7 +186,6 @@ const AnalysisResult = ({ data }) => {
         </div>
       )}
 
-      {/* Tombol Analisis Mendalam Gambar */}
       <div className="mt-6 flex justify-center">
         <div
           onClick={() => setShowDetailedAnalysis(true)}
