@@ -172,7 +172,7 @@ const AnalysisResult = ({ data }) => {
 
       {analyzed_url && (
         <div className="mt-4">
-          <h3 className="font-medium mb-1">Hasil Deteksi:</h3>
+          <h3 className="font-medium mb-1">Hasil Analisis:</h3>
           <img
             src={imageUrl}
             alt="Hasil Deteksi"
