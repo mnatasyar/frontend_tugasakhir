@@ -50,7 +50,7 @@ const DetailedAnalysisModal = ({ isOpen, onClose, data, frameNumber }) => {
                     • Posisi: ({face.bbox[0]}, {face.bbox[1]}) → ({face.bbox[2]}
                     ,{face.bbox[3]})
                   </li>
-                  <li>• Deteksi Wajah: {face.face_confidence.toFixed(3)}</li>
+                  <li>• Tingkat Keyakinan Wajah: {face.face_confidence.toFixed(3)}</li>
                   <li>
                     • Label Ketertarikan:{" "}
                     <strong className={labelColorClass[face.interest_label]}>
