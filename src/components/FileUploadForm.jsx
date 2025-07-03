@@ -79,18 +79,22 @@ const FileUploadForm = () => {
               Ukuran: {formatBytes(file.size)}
             </p>
             {file.type.startsWith("image/") && (
-              <img
-                src={URL.createObjectURL(file)}
-                alt="Preview"
-                className="mt-2 rounded-md max-h-48 object-contain border"
-              />
+              <div className="w-full aspect-video bg-gray-100 flex items-center justify-center">
+                <img
+                  src={URL.createObjectURL(file)}
+                  alt="Preview"
+                  className="w-full h-full object-contain"
+                />
+              </div>
             )}
             {file.type.startsWith("video/") && (
-              <video
-                src={URL.createObjectURL(file)}
-                controls
-                className="mt-2 rounded-md max-h-48 object-contain border"
-              />
+              <div className="w-full aspect-video bg-gray-100 flex items-center justify-center">
+                <video
+                  src={URL.createObjectURL(file)}
+                  controls
+                  className="w-full h-full object-contain"
+                />
+              </div>
             )}
           </div>
         )}

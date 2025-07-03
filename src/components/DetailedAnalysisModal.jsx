@@ -26,7 +26,7 @@ const DetailedAnalysisModal = ({ isOpen, onClose, data, frameNumber }) => {
           </button>
         </div>
 
-        <div className="p-6 max-h-[75vh] overflow-y-auto space-y-6">
+        <div className="p-6 max-h-[75vh] overflow-y-scroll scrollbar-thin space-y-6">
           <div className="bg-gray-100 p-4 rounded-lg shadow-sm">
             <p className="text-base">
               <strong>Total Wajah Terdeteksi:</strong> {data.total_faces}

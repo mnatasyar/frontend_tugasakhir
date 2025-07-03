@@ -13,9 +13,12 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white text-black px-4">
       <div className="max-w-3xl w-full flex flex-col items-center gap-8 p-8 shadow-xl animate-fade-in">
-        <h1 className="text-2xl md:text-3xl font-bold text-center mb-2">
-          Deteksi Wajah Dan Pengenalan Ekspresi Siswa SD menggunakan Model YOLOv8 Dan ResNet50 Untuk Mengukur Ketertarikan Terhadap Mata Pelajaran
-        </h1>
+      <div className="text-center leading-tight font-bold text-lg md:text-xl mb-2">
+  <p>DETEKSI WAJAH DAN PENGENALAN EKSPRESI SISWA SD</p>
+  <p>MENGGUNAKAN MODEL YOLOV8 DAN RESNET50</p>
+  <p>UNTUK MENGUKUR KETERTARIKAN</p>
+  <p>TERHADAP MATA PELAJARAN</p>
+</div>
         <img src="/logo.png" alt="Logo Universitas" className="w-32 h-32 object-contain mb-4" />
         <div className="flex flex-col sm:flex-row gap-4 w-full justify-center items-center mb-4">
           {members.map((m, i) => (
