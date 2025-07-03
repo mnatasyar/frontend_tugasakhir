@@ -23,7 +23,7 @@ export default function LandingPage() {
         <div className="flex flex-col sm:flex-row gap-4 w-full justify-center items-center mb-4">
           {members.map((m, i) => (
             <div key={i} className="flex flex-col items-center gap-2">
-              <img src={m.photo} alt={m.name} className="w-16 h-22 object-cover mb-1" />
+              <img src={m.photo} alt={m.name} className="w-24 h-24 object-cover mb-1" />
               <div className="font-semibold text-lg text-center">{m.name}</div>
               <div className="text-sm text-gray-600 text-center">{m.nim}</div>
             </div>
