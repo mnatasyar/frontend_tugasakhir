@@ -1,17 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
-import FileUploadForm from "./components/FileUploadForm";
-import LandingPage from "./components/LandingPage";
 import React from "react";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import AnalyzePage from "./pages/AnalyzePage";
+import LandingPage from "./pages/LandingPage";
 
-function AnalyzePage() {
-  return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <FileUploadForm />
-    </div>
-  );
-}
-
-function App() {
+export default function App() {
   return (
     <Router>
       <Routes>
@@ -21,5 +13,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;

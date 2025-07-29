@@ -3,7 +3,7 @@ import { analyzeFile } from "../utils/api";
 import AnalysisResult from "./AnalysisResult";
 import { Button } from "@/components/ui/button";
 
-const FileUploadForm = () => {
+export default function FileUploadForm() {
   const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -121,5 +121,3 @@ const FileUploadForm = () => {
     </div>
   );
 };
-
-export default FileUploadForm;
