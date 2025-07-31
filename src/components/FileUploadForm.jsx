@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { analyzeFile } from "../utils/api";
+import { analyzeFile } from "../lib/api";
 import AnalysisResult from "./AnalysisResult";
 import { Button } from "@/components/ui/button";
 

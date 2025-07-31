@@ -9,7 +9,7 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { OUTPUT_VIDEO_URL } from "../utils/constants";
+import { OUTPUT_VIDEO_URL } from "../lib/constants";
 import DetailedAnalysisModal from "./DetailedAnalysisModal";
 
 export default function VideoResultCarouse({ data }) {
@@ -22,6 +22,7 @@ export default function VideoResultCarouse({ data }) {
   const totalFaces = data.reduce((acc, frame) => acc + frame.total_faces, 0);
   const summary = {};
 
+//membuat array slidenya dari tiap frame video
   const slides = data.map((frame) => ({
     src: `${OUTPUT_VIDEO_URL}/${frame.output_image}`,
     description: `Frame ke-${frame.frame_index + 1} (detik ${
@@ -29,14 +30,13 @@ export default function VideoResultCarouse({ data }) {
     })`,
   }));
 
+//menghitung total jumlah dari ketiga kelas dengan cara menghitung setiap value yang munculnya +1
   data.forEach((frame) => {
     frame.faces.forEach((face) => {
       const label = face.interest_label;
       summary[label] = (summary[label] || 0) + 1;
     });
   });
-
-  console.log(data)
 
   return (
     <div className="mt-6 p-4 border rounded-md bg-white text-black shadow">
